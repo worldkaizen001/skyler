@@ -24,26 +24,26 @@ class Registration extends StatelessWidget {
                 height: constraint.maxHeight * 0.04,
               ),
 
-              GenericTextField(
+              const GenericTextField(
                 obscure: false,
                 hintText: 'FirstName',
               ),
-              GenericTextField(
+              const GenericTextField(
                 obscure: false,
                 hintText: 'LastName',
               ),
-              GenericTextField(
+              const GenericTextField(
 
                 obscure: false,
                 hintText: 'Email',
               ),
-              GenericTextField(
+              const GenericTextField(
                 obscure: true,
                 hintText: 'Password',),
               SizedBox(
                 height: constraint.maxHeight * 0.18,
               ),
-              Button(color: Color(0xff50b8e7), title: 'Register', height: 0.07, width: 1, radius: 8, callback: (){},),
+              Button(color: const Color(0xff50b8e7), title: 'Register', height: 0.07, width: 1, radius: 8, callback: (){},),
               SizedBox(
                 height: constraint.maxHeight * 0.02,
               ),
@@ -51,14 +51,14 @@ class Registration extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Already have an Account?',style: GoogleFonts.poppins(fontSize: 12),),
-                  SizedBox(width: 4,),
+                  const SizedBox(width: 4,),
                   InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return Login();
+                          return const Login();
                         }));
                       },
-                      child: Text('Sign in',style: GoogleFonts.poppins(),))
+                      child: Text('Sign in',style: GoogleFonts.poppins(color: const Color(0xff50b8e7)),))
                 ],
               )
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_appuytr/views/components/generics/button.dart';
 // import 'package:flutter_appuytr/views/login-register/registeration.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skyler/views/login-register/forget-password.dart';
 import 'package:skyler/views/login-register/registeration.dart';
 
 import '../components/generics/button.dart';
@@ -97,7 +98,9 @@ class Login extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomRight,
-                child: TextButton(onPressed: (){},child: Text('Forget Password?',style: GoogleFonts.poppins(fontSize: 15,fontWeight: FontWeight.w400),),)
+                child: TextButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const ForgetPassword()));
+                },child: Text('Forget Password?',style: GoogleFonts.poppins(fontSize: 15,fontWeight: FontWeight.w400),),)
 
               ),
               SizedBox(
@@ -105,7 +108,7 @@ class Login extends StatelessWidget {
               ),
 
 
-              Button(color: Color(0xff50b8e7), title: 'Sign In', height: 0.07, width: 1, radius: 8, callback: (){},),
+              Button(color: const Color(0xff50b8e7), title: 'Sign In', height: 0.07, width: 1, radius: 8, callback: (){},),
               SizedBox(
                 height: constraint.maxHeight * 0.02,
               ),
@@ -114,7 +117,7 @@ class Login extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width *0.38,
-                    child: Divider(
+                    child: const Divider(
 
                       height: 1,
                       color: Colors.blue,
@@ -123,7 +126,7 @@ class Login extends StatelessWidget {
                   Text('or',style: GoogleFonts.poppins(),),
                   SizedBox(
                     width: MediaQuery.of(context).size.width *0.38,
-                    child: Divider(
+                    child: const Divider(
 
                       height: 1,
                       color: Colors.blue,
@@ -142,14 +145,14 @@ class Login extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('New User?',style: GoogleFonts.poppins(),),
-                  SizedBox(width: 4,),
+                  const SizedBox(width: 4,),
                   InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
-                        return Registration();
+                        return const Registration();
                       }));
                     },
-                      child: Text('Sign up',style: GoogleFonts.poppins(),))
+                      child: Text('Sign up',style: GoogleFonts.poppins(color: const Color(0xff50b8e7)),))
                 ],
               )
 

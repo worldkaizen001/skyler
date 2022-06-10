@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class GenericTextField extends StatelessWidget {
-  final Function? validator;
-  final Function? onChanged;
+
+class GenericTextField extends HookWidget {
+  final String? Function(String?)? validator;
+  final String? Function(String?)? onChanged;
   final String? hintText;
   final TextEditingController? controller;
   final bool? obscure;
+  final TextInputType? textInputType;
 
-  const GenericTextField({this.obscure,this.onChanged,this.validator,this.hintText,this.controller,Key? key}) : super(key: key);
+  const GenericTextField({this.textInputType,this.obscure,this.onChanged,this.validator,this.hintText,this.controller,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +26,7 @@ class GenericTextField extends StatelessWidget {
               obscureText: obscure!,
               controller: controller,
 
-              validator: (value){
-                validator!();
-              },
-              onChanged: (val){
-                onChanged!();
-              },
+              validator: validator,
 
 
               decoration: InputDecoration(
@@ -54,7 +52,7 @@ class GenericTextField extends StatelessWidget {
 
             ),
           ),
-          SizedBox(
+          const SizedBox(
            height:16,
           ),
 
