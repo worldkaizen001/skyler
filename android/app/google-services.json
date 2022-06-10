@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "452891775636",
+    "project_id": "skyler-7da27",
+    "storage_bucket": "skyler-7da27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452891775636:android:f6f605192b77996c2fda81",
+        "android_client_info": {
+          "package_name": "com.skyler.skyler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452891775636-j9v4o6eapgou800aj6o5rmg8p8fq2jau.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skyler.skyler",
+            "certificate_hash": "499b4b6b65cffdd6bf7dca059cc3ca8b89f578f3"
+          }
+        },
+        {
+          "client_id": "452891775636-hb50p2lpbpj2e7kfhjg6sdas3chafc41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfEijavcq9epNwEBOAsKsQu3KBwnpVO7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452891775636-hb50p2lpbpj2e7kfhjg6sdas3chafc41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

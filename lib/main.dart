@@ -4,12 +4,16 @@ import 'package:flutter/services.dart';
 import 'package:skyler/views/navigation/navigation.dart';
 import 'package:provider/provider.dart';
 
+import 'controllers/providers/auth-provider.dart';
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
- runApp ( const MyApp());
+ runApp (  MultiProvider(
+     providers: [ChangeNotifierProvider(create: (_) => AuthProvider())],
+     child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

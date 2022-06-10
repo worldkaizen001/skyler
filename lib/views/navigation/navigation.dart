@@ -24,7 +24,7 @@ class _NavigationState extends State<Navigation> {
   Widget build(BuildContext context) {
     final screens = [
 
-      Homepage1(),
+      Homepage(),
       ProfileScreen(),
       Registration(),
     ];

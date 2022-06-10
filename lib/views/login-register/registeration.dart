@@ -55,7 +55,7 @@ class Registration extends StatelessWidget {
                   InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return const Login();
+                          return  Login();
                         }));
                       },
                       child: Text('Sign in',style: GoogleFonts.poppins(color: const Color(0xff50b8e7)),))
