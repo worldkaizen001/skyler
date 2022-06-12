@@ -119,7 +119,7 @@ class _LoginState extends State<Login> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: TextButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const ForgetPassword()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>  ForgetPassword()));
                   },child: Text('Forget Password?',style: GoogleFonts.poppins(fontSize: 15,fontWeight: FontWeight.w400),),)
 
                 ),
@@ -128,18 +128,30 @@ class _LoginState extends State<Login> {
                 ),
 
 
-              loading? CircularProgressIndicator() : Button(color: const Color(0xff50b8e7), title: 'Sign In', height: 0.07, width: 1, radius: 8, callback: ()
+              loading?  SizedBox(
+                height: 80,
+                width: 80,
+                child: Card(
+                  elevation: 6,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                  color: Colors.white,
+                    child: const Center(child: CircularProgressIndicator(backgroundColor: Colors.red,color: Color(0xff50b8e7),))),
+              ) : Button(color: const Color(0xff50b8e7), title: 'Sign In', height: 0.07, width: 1, radius: 8, callback: ()
 
-               async {
-                setState(() {
-                  loading = true;
-                });
-
-                  signInUser(emailController.text.trim(),passwordController.text.trim());
-
+                {
                 setState(() {
                   loading = false;
+                  signInUser(emailController.text.trim(),passwordController.text.trim());
+
+
                 });
+
+                // setState(() {
+                //   loading = false;
+                //
+                //
+                // });
+
 
 
                 },),
@@ -185,7 +197,7 @@ class _LoginState extends State<Login> {
                     InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return const Registration();
+                          return  Registration();
                         }));
                       },
                         child: Text('Sign up',style: GoogleFonts.poppins(color: const Color(0xff50b8e7)),))
