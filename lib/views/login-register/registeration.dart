@@ -27,16 +27,17 @@ class Registration extends StatelessWidget {
      void postDataToDataBase () async{
 
        final fireStore = FirebaseFirestore.instance;
-       UserModel userModel = UserModel();
        User? user = auth.currentUser;
+       UserModel userModel = UserModel();
+
 
 
        userModel.email = user!.email;
        userModel.uid = user.uid;
-       userModel.firstName = fNameController.text.trim();
+       userModel.firstName = fNameController.text;
        userModel.lastName = lNameController.text;
 
-       await fireStore.collection('users').doc(user.uid).set(userModel.toMap());
+       await fireStore.collection("users").doc(user.uid).set(userModel.toMap());
        Fluttertoast.showToast(msg: 'Account Created Successful');
        Navigator.push(context, MaterialPageRoute(builder: (context){
          return const Homepage();

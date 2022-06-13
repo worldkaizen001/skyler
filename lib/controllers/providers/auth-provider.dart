@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:skyler/views/home/homepage.dart';
 
 
 class AuthProvider with ChangeNotifier{
@@ -9,10 +10,11 @@ class AuthProvider with ChangeNotifier{
 
   //Implement sign in with email and password
 
-  Future<void> signInUser (String email,String password) async{
+  Future<void> signInUser ({ required BuildContext context, required String email, required String password}) async{
 
      await auth.signInWithEmailAndPassword(email: email, password: password).then((uid) => {
        Fluttertoast.showToast(msg: 'Login Successful'),
+       Navigator.push(context, MaterialPageRoute(builder: (context)=> const Homepage()))
 
      }).catchError((e){
        Fluttertoast.showToast(msg: e!.message);

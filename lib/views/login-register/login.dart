@@ -30,33 +30,16 @@ class _LoginState extends State<Login> {
 
   final formGlobalKey = GlobalKey<FormState>();
 
-   final FirebaseAuth auth = FirebaseAuth.instance;
 
    bool loading = false;
 
   @override
   Widget build(BuildContext context) {
-    void signInUser (String email,String password) async{
-
-
-      if (formGlobalKey.currentState!.validate()){
-        await auth.signInWithEmailAndPassword(email: email, password: password).then((uid) => {
-          Fluttertoast.showToast(msg: 'Login Successful'),
-          Navigator.push(context, MaterialPageRoute(builder: (context){
-            return const Homepage();
-          }))
-
-
-        }).catchError((e){
-          Fluttertoast.showToast(msg: e!.message);
-        });
-      }
-
-
-
-    }
 
     return LayoutBuilder(builder: (ctx, constraint){
+
+
+
 
       return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -84,7 +67,7 @@ class _LoginState extends State<Login> {
                       if (!RegExp(
                           "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
                           .hasMatch(val)) {
-                        return 'Please a valid Email';
+                        return 'Please enter a valid Email';
                       }
                       return null;
                     },
@@ -141,19 +124,11 @@ class _LoginState extends State<Login> {
                 {
                 setState(() {
                   loading = false;
-                  signInUser(emailController.text.trim(),passwordController.text.trim());
-
-
+                  if (formGlobalKey.currentState!.validate()){
+                    var authy = Provider.of<AuthProvider>(context);
+                    authy.signInUser(context: context, email: emailController.text.trim(), password: passwordController.text.trim());
+                  }
                 });
-
-                // setState(() {
-                //   loading = false;
-                //
-                //
-                // });
-
-
-
                 },),
                 SizedBox(
                   height: constraint.maxHeight * 0.02,

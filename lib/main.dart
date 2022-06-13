@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:skyler/views/navigation/navigation.dart';
 import 'package:provider/provider.dart';
 
+import 'controllers/api-services/hotels-api.dart';
 import 'controllers/providers/auth-provider.dart';
 
 
@@ -12,7 +13,8 @@ Future<void> main() async{
   await Firebase.initializeApp();
   // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
  runApp (  MultiProvider(
-     providers: [ChangeNotifierProvider(create: (_) => AuthProvider())],
+     providers: [ChangeNotifierProvider(create: (_) => AuthProvider()),
+                 ChangeNotifierProvider(create: (_) => Hotels())],
      child: const MyApp()));
 }
 
