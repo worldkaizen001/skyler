@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skyler/models/userModel.dart';
 
+import '../../controllers/providers/auth-provider.dart';
 import '../components/generics/button.dart';
 import '../components/generics/text-field.dart';
 import '../home/homepage.dart';
@@ -9,6 +10,8 @@ import 'login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+
 
 class Registration extends StatelessWidget {
    Registration({Key? key}) : super(key: key);
@@ -24,7 +27,7 @@ class Registration extends StatelessWidget {
 
    @override
   Widget build(BuildContext context) {
-     void postDataToDataBase () async{
+     Future postDataToDataBase () async{
 
        final fireStore = FirebaseFirestore.instance;
        User? user = auth.currentUser;
@@ -164,6 +167,11 @@ class Registration extends StatelessWidget {
                 Button(color: const Color(0xff50b8e7), title: 'Register', height: 0.07, width: 1, radius: 8, callback: ()
                 {
                   createUser(emailController.text.trim(),passwordController.text.trim());
+                  if (formGlobalKey.currentState!.validate()){
+                    var authy = Provider.of<AuthProvider>(context);
+                    // authy.createUser(context: context, email: emailController.text.trim(), password: passwordController.text.trim(), callback: (){postDataToDataBase();});
+                  }
+
                 }
                   ,),
                 SizedBox(

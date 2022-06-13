@@ -125,7 +125,7 @@ class _LoginState extends State<Login> {
                 setState(() {
                   loading = false;
                   if (formGlobalKey.currentState!.validate()){
-                    var authy = Provider.of<AuthProvider>(context);
+                    var authy = Provider.of<AuthProvider>(context,listen: false);
                     authy.signInUser(context: context, email: emailController.text.trim(), password: passwordController.text.trim());
                   }
                 });

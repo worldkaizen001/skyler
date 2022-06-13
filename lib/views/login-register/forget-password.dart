@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skyler/controllers/providers/auth-provider.dart';
 import 'package:skyler/views/components/generics/button.dart';
 import 'package:skyler/views/components/generics/text-field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
+
 
 import '../home/homepage.dart';
 
@@ -22,22 +25,24 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
    final FirebaseAuth auth = FirebaseAuth.instance;
 
+
    @override
   Widget build(BuildContext context) {
+     var authy = Provider.of<AuthProvider>(context,listen: false);
 
 
-  Future resetPassword() async {
-    if (formGlobalKey.currentState!.validate()){}
-    try{
-      await auth.sendPasswordResetEmail(email: emailController.text.trim());
-      Fluttertoast.showToast(msg: 'Password reset email sent');
-      Navigator.pop(context);
-    }
-   on FirebaseAuthException catch (e){
-      Fluttertoast.showToast(msg: e.toString());
-
-    }
-  }
+  // Future resetPassword() async {
+  //   if (formGlobalKey.currentState!.validate()){}
+  //   try{
+  //     await auth.sendPasswordResetEmail(email: emailController.text.trim());
+  //     Fluttertoast.showToast(msg: 'Password reset email sent');
+  //     Navigator.pop(context);
+  //   }
+  //  on FirebaseAuthException catch (e){
+  //     Fluttertoast.showToast(msg: e.toString());
+  //
+  //   }
+  // }
 
 
 
@@ -97,16 +102,19 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     elevation: 0.2,
                     color: const Color(0xff50b8e7), title: 'Continue', height: 0.07, width: 1, radius: 8, callback: ()
                   {
-                     resetPassword();
-                     print('boy');
+                     // resetPassword();
+                    if (formGlobalKey.currentState!.validate()){
+                      var authy = Provider.of<AuthProvider>(context,listen: false);
+                      authy.resetPassword(context: context, email: emailController.text.trim());
+                    }
+
                   },),
                   Button(
                     elevation: 0.2,
                     color: const Color(0xff50b8e7), title: 'logout', height: 0.07, width: 1, radius: 8, callback: ()
                   {
-                    auth.signOut();
-                    Navigator.pop(context);
-                    Fluttertoast.showToast(msg: 'logged out');
+                    authy.signOut(context);
+
                   },),
                 ],
               ),
