@@ -28,6 +28,8 @@ class _HomepageState extends State<Homepage> {
   UserModel? loggedInUser = UserModel();
   FirebaseAuth auth = FirebaseAuth.instance;
 
+ 
+
   @override
   void initState() {
     super.initState();
@@ -61,7 +63,9 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: const Text('Registration'),
+        ),
         body: RefreshIndicator(
           color: Colors.red,
           onRefresh: () async{
